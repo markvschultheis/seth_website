@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<style type="text/css" scoped>
+.scrollable {
+    position: relative;
+    height: 200px;
+    margin-top: .5rem;
+    overflow: auto;
+    padding: 0px;
+}
+</style>
+
+<img class="img-fluid" src="/static/seth_schultheis.JPEG">
+<div class="scrollable">
+    {% for event in event_list %}
+    <h1>{{ event.title }}</h1>
+    <p>{{ event.description }}</p>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

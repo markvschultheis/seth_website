@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <form method="POST">
+        <input type="hidden" id='formtype' name="formtype" value="event">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="description">Description:</label><br>
+        <input type="text" id="description" name="description"><br>
+        <label for="link">Link:</label><br>
+        <input type="url" id="link" name="link"><br>
+        <label for="datetime">Date and time:</label><br>
+        <input type="datetime-local" id="datetime" name="datetime"><br>
+        <label for="location">Location:</label><br>
+        <input type="text" id="location" name="location"><br>
+        <input type="submit" value="Add new event">
+    </form>
+    <hr>
+    {% for event in event_list %}
+    <h4>Event Id:{{ event.id }}</h4>
+    <p>Title:{{ event.title }}</p>
+    <p>Description{{ event.description }}</p>
+    <p>Link:{{ event.link }}</p>
+    <p>Date and Time:{{ event.datetime }}</p>
+    <p>Location:{{ event.location }}</p>
+    <form method="POST">
+        <input type="hidden" id='formtype' name="formtype" value="delevent">
+        <input type="hidden" id="eventid" name="eventid" value="{{ event.id }}">
+        <input type="submit" value="Delete Event {{ event.id }}">
+    </form>
+    {% endfor %}
+</body>
+</html>
