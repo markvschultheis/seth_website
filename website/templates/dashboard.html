@@ -25,7 +25,7 @@
     {% for event in event_list %}
     <h4>Event Id:{{ event.id }}</h4>
     <p>Title:{{ event.title }}</p>
-    <p>Description{{ event.description }}</p>
+    <p>Description:{{ event.description }}</p>
     <p>Link:{{ event.link }}</p>
     <p>Date and Time:{{ event.datetime }}</p>
     <p>Location:{{ event.location }}</p>
@@ -35,5 +35,26 @@
         <input type="submit" value="Delete Event {{ event.id }}">
     </form>
     {% endfor %}
+    <hr>
+    <h4>Users</h4>
+    {% for user in user_list %}
+    <p>Username:{{ user.username }}</p>
+    <form method="POST">
+        <input type="hidden" id='formtype' name="formtype" value="deluser">
+        <input type="hidden" id="userid" name="userid" value="{{ user.id }}">
+        <input type="submit" value="Delete User">
+    </form>
+    {% endfor %}
+    <h4>Add User</h4>
+    <form method="POST">
+        <input type="hidden" id='formtype' name="formtype" value="user">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="user_password">Password:</label><br>
+        <input type="password" id="user_password" name="user_password"><br>
+        <label for="user_password_check">Password:</label><br>
+        <input type="password" id="user_password_check" name="user_password_check"><br>
+        <input type="submit" value="Add new user">
+    </form>
 </body>
 </html>
